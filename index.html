@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff9ed" />
+    <title>Debatuu — Find your voice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Debatuu home">
+          <span class="brand-mark">D</span><span>debatuu</span>
+        </a>
+        <div class="top-actions">
+          <button class="sound-button" id="soundToggle" type="button" aria-label="Turn sound off">
+            <span id="soundIcon">♪</span><span id="soundLabel">Sound on</span>
+          </button>
+          <div class="avatar">S</div>
+        </div>
+      </header>
+
+      <section class="lesson" id="lessonView">
+        <div class="progress-wrap">
+          <div class="progress-copy"><span id="lessonLabel">Lesson 1 of 5</span><strong id="lessonName">Meet your debate crew</strong></div>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+
+        <div class="stage-card">
+          <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+          <div class="topic-pill"><span>Today’s topic</span> Should school start later?</div>
+          <div class="stage" aria-live="polite">
+            <div class="character-wrap maya" id="mayaCharacter">
+              <div class="character-label">Maya</div>
+              <div class="portrait-frame"><img class="character-portrait" src="assets/characters/maya-v2.png" alt="Maya, a friendly young debate coach" /></div>
+              <div class="speaker-ring"><span></span><span></span><span></span></div>
+            </div>
+
+            <div class="visual-idea" id="visualIdea">
+              <div class="idea-icon" id="ideaIcon">✦</div>
+              <strong id="ideaTitle">Debate is a conversation</strong>
+              <span id="ideaText">Good debaters speak clearly and listen closely.</span>
+            </div>
+
+            <div class="character-wrap leo" id="leoCharacter">
+              <div class="character-label">Leo</div>
+              <div class="portrait-frame"><img class="character-portrait" src="assets/characters/leo-v2.png" alt="Leo, a friendly young debate partner" /></div>
+              <div class="speaker-ring"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+
+          <div class="voice-panel">
+            <div class="now-speaking"><span class="pulse-dot"></span><span id="speakerName">Maya is speaking</span></div>
+            <p id="subtitle">Hi! I’m Maya. Debating isn’t about being loud or proving someone wrong.</p>
+            <div class="voice-controls">
+              <button class="icon-button" id="replayButton" type="button" aria-label="Replay this line">↻</button>
+              <button class="play-button" id="playButton" type="button" aria-label="Pause"><span id="playIcon">Ⅱ</span></button>
+              <button class="icon-button" id="skipLineButton" type="button" aria-label="Next line">›</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="lesson-actions">
+          <button class="text-button" id="skipLessonButton" type="button">Skip lesson</button>
+          <button class="primary-button" id="nextButton" type="button">Continue <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="practice hidden" id="practiceView">
+        <div class="confetti" aria-hidden="true">✦ &nbsp; ● &nbsp; ✦ &nbsp; ● &nbsp; ✦</div>
+        <span class="eyebrow">Your turn</span>
+        <h1>You’ve got the basics.<br /><em>Now find your voice.</em></h1>
+        <p>Maya and Leo are ready for your first friendly debate.</p>
+        <div class="challenge-card">
+          <div class="challenge-icon">🎒</div>
+          <div><span>Practice debate</span><h2>Should homework be optional?</h2><p>1-minute opening · One rebuttal · Friendly feedback</p></div>
+        </div>
+        <button class="primary-button large" id="startDebateButton" type="button">Start my first debate <span>→</span></button>
+        <button class="text-button" id="restartButton" type="button">Replay the introduction</button>
+      </section>
+
+      <section class="debate-room hidden" id="debateView">
+        <div class="debate-head"><button class="text-button" id="backButton" type="button">← Back</button><span class="round-pill">Opening statement</span><span class="timer" id="timer">01:00</span></div>
+        <div class="debate-grid">
+          <div class="prompt-card"><span class="eyebrow">Your topic</span><h1>Should homework<br />be optional?</h1><p>Share your position, one strong reason, and an example.</p><div class="prompt-steps"><span><b>1</b> Position</span><span><b>2</b> Reason</span><span><b>3</b> Example</span></div></div>
+          <div class="record-card" id="recordCard"><div class="mic-orbit"><button class="mic-button" id="micButton" type="button" aria-label="Start recording">●</button></div><h2 id="recordTitle">Ready when you are</h2><p id="recordHint">Tap the microphone and start speaking.</p><div class="live-transcript hidden" id="liveTranscript"></div><button class="primary-button hidden" id="finishButton" type="button">Finish & get feedback <span>→</span></button></div>
+        </div>
+      </section>
+
+      <section class="feedback hidden" id="feedbackView">
+        <span class="eyebrow">Your first feedback</span><h1>Strong start!</h1><p>You made your position easy to understand. Here’s what to try next.</p>
+        <div class="score-grid"><div><span>Clear position</span><strong id="clarityScore">4</strong><small>/ 5</small></div><div><span>Reasoning</span><strong id="reasonScore">3</strong><small>/ 5</small></div><div><span>Example</span><strong id="exampleScore">3</strong><small>/ 5</small></div></div>
+        <div class="coach-note"><div class="mini-maya">M</div><div><span>Maya’s coaching tip</span><p id="coachTip">Try adding a specific example. Start with: “For example…”</p></div></div>
+        <button class="primary-button large" id="tryAgainButton" type="button">Try it one more time <span>↻</span></button>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
